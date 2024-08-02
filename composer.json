@@ -1,0 +1,17 @@
+{
+    "name": "levart/damar",
+    "description": "Technical Testing On Levart",
+    "type": "project",
+    "require": {
+        "php": "^7.2",
+        "phpmailer/phpmailer": "^6.9",
+        "vlucas/phpdotenv": "^5.6",
+        "league/oauth2-server": "^8.4"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Levart\\Damar\\": "src/"
+        }
+    }
+}
