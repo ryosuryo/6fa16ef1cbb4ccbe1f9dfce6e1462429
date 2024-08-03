@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * EmailSender class for handling email operations using PHPMailer.
  *
@@ -7,9 +9,9 @@
  *
  * @category Email
  * @package  Levart
- * @author   Damar <damarsuryosasono@gmail.com>
+ * @author   Damar Suryo Sasono <damarsuryosasono@gmail.com>
  * @license  http://www.opensource.org/licenses/mit-license.php MIT License
- * @link     https://github.com/yourusername/yourrepository
+ * @link     https://github.com/ryosuryo/6fa16ef1cbb4ccbe1f9dfce6e1462429
  * /
 
 /**
@@ -23,21 +25,21 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 /**
  * EmailSender class for handling email operations using PHPMailer.
- * 
+ *
  * @category Email
  * @package  Levart
- * @author   Damar <damarsuryosasono@gmail.com>
+ * @author   Damar Suryo Sasono <damarsuryosasono@gmail.com>
  * @license  http://www.opensource.org/licenses/mit-license.php MIT License
- * @link     https://github.com/yourusername/yourrepository
+ * @link     https://github.com/ryosuryo/6fa16ef1cbb4ccbe1f9dfce6e1462429
  */
 class EmailSender
 {
     /**
      * Holds the PHPMailer instance used for sending emails.
-     * 
+     *
      * @var PHPMailer
      */
-    
+
     private $_mailer;
 
     /**
@@ -60,9 +62,10 @@ class EmailSender
     /**
      * Send an email
      *
-     * @params string $to Recipient's email address
-     * @params string $subject Email subject
-     * @params string $message Email body
+     * @param string $to      Recipient's email address
+     * @param string $subject Email subject
+     * @param string $message Email body
+     *
      * @return bool True if sent successfully, false otherwise
      */
     public function sendEmail($to, $subject, $message)

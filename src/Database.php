@@ -5,11 +5,11 @@
  *
  * @category Configuration
  * @package  Levart
- * @author   Your Name <your.email@example.com>
+ * @author   Damar Suryo Sasono <damarsuryosasono@gmail.com>
  * @license  http://www.opensource.org/licenses/mit-license.php MIT License
- * @link     https://github.com/yourusername/yourrepository
+ * @link     https://github.com/ryosuryo/6fa16ef1cbb4ccbe1f9dfce6e1462429
  */
- namespace Levart;
+namespace Levart;
 
 /**
  * Database class for handling database operations.
@@ -17,9 +17,10 @@
  *
  * @category Configuration
  * @package  Levart
- * @author   Your Name <your.email@example.com>
+ * @author   Damar Suryo Sasono <damarsuryosasono@gmail.com>
  * @license  http://www.opensource.org/licenses/mit-license.php MIT License
- * @link     https://github.com/yourusername/yourrepository
+ * @version  Release: 1.0
+ * @link     https://github.com/ryosuryo/6fa16ef1cbb4ccbe1f9dfce6e1462429
  */
 class Database
 {
@@ -32,7 +33,7 @@ class Database
 
     /**
      * Database constructor.
-     * 
+     *
      * @param array $config Database configuration
      */
     public function __construct($config)
@@ -45,10 +46,11 @@ class Database
     /**
      * Insert an email into the database.
      *
-     * @params string $to The recipient's email address
-     * @params string $subject The email subject
-     * @params string $message The email message
-     * @params string $status The status of the email
+     * @param string $to      The recipient's email address
+     * @param string $subject The email subject
+     * @param string $message The email message
+     * @param string $status  The status of the email
+     *
      * @return bool Returns true on success or false on failure
      */
     public function insertEmail($to, $subject, $message, $status)

@@ -8,15 +8,16 @@
  *
  * @category Application
  * @package  Levart
- * @author   Damar <damarsuryosasono@gmail.com>
+ * @author   Damar Suryo Sasono <damarsuryosasono@gmail.com>
  * @license  http://www.opensource.org/licenses/mit-license.php MIT License
- * @link     https://github.com/yourusername/yourrepository
+ * @link     https://github.com/ryosuryo/6fa16ef1cbb4ccbe1f9dfce6e1462429
  */
 
 require_once 'vendor/autoload.php';
 
 use Levart\Database;
 use Levart\EmailSender;
+use Levart\Config; // Added this line to import the Config class
 
 use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Grant\ClientCredentialsGrant;
@@ -25,10 +26,11 @@ use League\OAuth2\Server\Middleware\ResourceServerMiddleware;
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../config');
 $dotenv->load();
-$config = include_once __DIR__ . '/../config/config.php';
+$configDb = Config::getDb(); // Use the new method to get the configuration
+$configEmail = Config::getEmail(); // Use the new method to get the configuration
 
-$db = new Database($config['db']);
-$emailSender = new EmailSender($config['email']);
+$db = new Database($configDb);
+$emailSender = new EmailSender($configEmail);
 
 // OAuth2 setup here
 
