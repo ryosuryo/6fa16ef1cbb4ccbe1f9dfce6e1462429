@@ -1,4 +1,15 @@
 <?php
+/**
+ * Specify the PHP version
+ * This line indicates the minimum PHP version required for this file
+ * Change '8.0' to your required version
+ * 
+ * @category Configuration
+ * @package  Levart
+ * @author   Damar Suryo Sasono <damarsuryosasono@gmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT License
+ * @link     https://github.com/ryosuryo/6fa16ef1cbb4ccbe1f9dfce6e1462429
+ */
 declare(strict_types=1);
 
 /**
@@ -40,7 +51,7 @@ class EmailSender
      * @var PHPMailer
      */
 
-    private $_mailer;
+    public $mailer;
 
     /**
      * Constructor for EmailSender class.
@@ -49,14 +60,14 @@ class EmailSender
      */
     public function __construct(array $config)
     {
-        $this->_mailer = new PHPMailer(true);
-        $this->_mailer->isSMTP();
-        $this->_mailer->Host = $config['host'];
-        $this->_mailer->SMTPAuth = true;
-        $this->_mailer->Username = $config['username'];
-        $this->_mailer->Password = $config['password'];
-        $this->_mailer->SMTPSecure = 'tls';
-        $this->_mailer->Port = $config['port'];
+        $this->mailer = new PHPMailer(true);
+        $this->mailer->isSMTP();
+        $this->mailer->Host = $config['host'];
+        $this->mailer->SMTPAuth = true;
+        $this->mailer->Username = $config['username'];
+        $this->mailer->Password = $config['password'];
+        $this->mailer->SMTPSecure = 'tls';
+        $this->mailer->Port = $config['port'];
     }
 
     /**
@@ -71,12 +82,12 @@ class EmailSender
     public function sendEmail($to, $subject, $message)
     {
         try {
-            $this->_mailer->setFrom('from@example.com', 'Mailer');
-            $this->_mailer->addAddress($to);
-            $this->_mailer->isHTML(true);
-            $this->_mailer->Subject = $subject;
-            $this->_mailer->Body = $message;
-            $this->_mailer->send();
+            $this->mailer->setFrom('from@example.com', 'Mailer');
+            $this->mailer->addAddress($to);
+            $this->mailer->isHTML(true);
+            $this->mailer->Subject = $subject;
+            $this->mailer->Body = $message;
+            $this->mailer->send();
             return true;
         } catch (Exception $e) {
             return false;

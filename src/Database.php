@@ -1,4 +1,18 @@
 <?php
+
+/**
+ * Specify the PHP version
+ * This line indicates the minimum PHP version required for this file
+ * Change '8.0' to your required version
+ * 
+ * @category Configuration
+ * @package  Levart
+ * @author   Damar Suryo Sasono <damarsuryosasono@gmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT License
+ * @link     https://github.com/ryosuryo/6fa16ef1cbb4ccbe1f9dfce6e1462429
+ */
+declare(strict_types=1);
+
 /**
  * Database class for handling database operations.
  * Class provides methods for connecting to and interacting with a PostgreSQL DB
@@ -29,7 +43,7 @@ class Database
      *
      * @var \PDO
      */
-    private $_pdo;
+    public $pdo;
 
     /**
      * Database constructor.
@@ -39,8 +53,8 @@ class Database
     public function __construct($config)
     {
         $dsn = "pgsql:host={$config['host']};dbname={$config['name']}";
-        $this->_pdo = new \PDO($dsn, $config['user'], $config['pass']);
-        $this->_pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $this->pdo = new \PDO($dsn, $config['user'], $config['pass']);
+        $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
 
     /**
@@ -57,7 +71,7 @@ class Database
     {
         $sql = "INSERT INTO emails (recipient, subject, message, status)
                 VALUES (?, ?, ?, ?)";
-        $stmt = $this->_pdo->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([$to, $subject, $message, $status]);
     }
 }

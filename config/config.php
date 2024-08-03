@@ -1,5 +1,18 @@
 <?php
 /**
+ * Specify the PHP version
+ * This line indicates the minimum PHP version required for this file
+ * Change '8.0' to your required version
+ * 
+ * @category Configuration
+ * @package  Levart
+ * @author   Damar Suryo Sasono <damarsuryosasono@gmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT License
+ * @link     https://github.com/ryosuryo/6fa16ef1cbb4ccbe1f9dfce6e1462429
+ */
+declare(strict_types=1);
+
+/**
  * Database class for handling database operations.
  * Class provides methods for connecting to and interacting with a PostgreSQL DB
  *
@@ -17,7 +30,7 @@ namespace Levart;
  * This file contains various configuration settings for the application.
  *
  * @category Configuration
- * @package  Levart_Test
+ * @package  Levart
  * @author   Damar Suryo Sasono <damarsuryosasono@gmail.com>
  * @license  http://www.opensource.org/licenses/mit-license.php MIT License
  * @link     https://github.com/ryosuryo/6fa16ef1cbb4ccbe1f9dfce6e1462429
@@ -35,21 +48,21 @@ class Config
         // Initialization code can go here
     }
 
-    private static $_db = [
+    public static $db = [
         'host' => 'golden-swimmer-9805.8nk.gcp-asia-southeast1.cockroachlabs.cloud',
         'user' => 'damar',
         'pass' => 'eHGt0xgqP364qCusMFe_OQ',
         'name' => 'levart',
     ];
 
-    private static $_email = [
+    public static $email = [
         'host' => 'smtp.your-email-provider.com',
         'port' => 587,
         'username' => 'your-email@example.com',
         'password' => 'your-email-password',
     ];
 
-    private static $_oauth2 = [
+    public static $oauth2 = [
         'client_id' => 'your_client_id',
         'client_secret' => 'your_client_secret',
     ];
@@ -61,7 +74,7 @@ class Config
      */
     public static function getDb()
     {
-        return self::$_db;
+        return self::$db;
     }
 
     /**
@@ -73,7 +86,7 @@ class Config
      */
     public static function setDb($db)
     {
-        self::$_db = $db;
+        self::$db = $db;
     }
 
     /**
@@ -83,7 +96,7 @@ class Config
      */
     public static function getEmail()
     {
-        return self::$_email;
+        return self::$email;
     }
 
     /**
@@ -95,7 +108,7 @@ class Config
      */
     public static function setEmail($email)
     {
-        self::$_email = $email;
+        self::$email = $email;
     }
 
     /**
@@ -105,7 +118,7 @@ class Config
      */
     public static function getOauth2()
     {
-        return self::$_oauth2;
+        return self::$oauth2;
     }
 
     /**
@@ -117,6 +130,6 @@ class Config
      */
     public static function setOauth2($oauth2)
     {
-        self::$_oauth2 = $oauth2;
+        self::$oauth2 = $oauth2;
     }
 }
