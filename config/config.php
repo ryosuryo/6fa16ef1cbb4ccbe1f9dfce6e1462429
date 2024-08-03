@@ -16,7 +16,7 @@ declare(strict_types=1);
  * Database class for handling database operations.
  * Class provides methods for connecting to and interacting with a PostgreSQL DB
  *
- * @category Configuration
+ * @category Namespace
  * @package  Levart
  * @author   Damar Suryo Sasono <damarsuryosasono@gmail.com>
  * @license  http://www.opensource.org/licenses/mit-license.php MIT License

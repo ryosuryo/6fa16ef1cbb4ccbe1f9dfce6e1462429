@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Specify the PHP version
  * This line indicates the minimum PHP version required for this file
@@ -13,16 +12,6 @@
  */
 declare(strict_types=1);
 
-/**
- * Database class for handling database operations.
- * Class provides methods for connecting to and interacting with a PostgreSQL DB
- *
- * @category Configuration
- * @package  Levart
- * @author   Damar Suryo Sasono <damarsuryosasono@gmail.com>
- * @license  http://www.opensource.org/licenses/mit-license.php MIT License
- * @link     https://github.com/ryosuryo/6fa16ef1cbb4ccbe1f9dfce6e1462429
- */
 namespace Levart;
 
 /**
