@@ -3,7 +3,6 @@
  * Specify the PHP version
  * This line indicates the minimum PHP version required for this file
  * Change '8.0' to your required version
- * 
  * @category Configuration
  * @package  Levart
  * @author   Damar Suryo Sasono <damarsuryosasono@gmail.com>
@@ -29,7 +28,7 @@ declare(strict_types=1);
  * EmailSender class for handling email operations using PHPMailer.
  */
 
-namespace Levart;
+namespace Levart\Damar;
 
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -90,6 +89,7 @@ class EmailSender
             $this->mailer->send();
             return true;
         } catch (Exception $e) {
+            echo $e;
             return false;
         }
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Main entry point for the application.
  *
@@ -12,13 +13,11 @@
  * @license  http://www.opensource.org/licenses/mit-license.php MIT License
  * @link     https://github.com/ryosuryo/6fa16ef1cbb4ccbe1f9dfce6e1462429
  */
+require_once '../vendor/autoload.php';
 
-require_once 'vendor/autoload.php';
-
-use Levart\Database;
-use Levart\EmailSender;
-use Levart\Config; // Added this line to import the Config class
-
+use Levart\Damar\Database;
+use Levart\Damar\EmailSender;
+use Levart\Damar\Config; // Added this line to import the Config class
 use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Grant\ClientCredentialsGrant;
 use League\OAuth2\Server\ResourceServer;
@@ -26,6 +25,13 @@ use League\OAuth2\Server\Middleware\ResourceServerMiddleware;
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../config');
 $dotenv->load();
+
+if (!class_exists('Levart\Config')) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Configuration class not found']);
+    exit;
+}
+
 $configDb = Config::getDb(); // Use the new method to get the configuration
 $configEmail = Config::getEmail(); // Use the new method to get the configuration
 
@@ -34,8 +40,7 @@ $emailSender = new EmailSender($configEmail);
 
 // OAuth2 setup here
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST'
-    && $_SERVER['REQUEST_URI'] === '/send-email'
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SERVER['REQUEST_URI'] === '/send-email'
 ) {
     $input = json_decode(file_get_contents('php://input'), true);
 
@@ -50,8 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
     $message = $input['message'];
 
     $status = $emailSender->sendEmail($to, $subject, $message) ? 'sent' : 'failed';
-
     $db->insertEmail($to, $subject, $message, $status);
-
     echo json_encode(['status' => $status]);
 }

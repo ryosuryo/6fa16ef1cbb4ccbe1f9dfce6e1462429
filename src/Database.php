@@ -3,7 +3,6 @@
  * Specify the PHP version
  * This line indicates the minimum PHP version required for this file
  * Change '8.0' to your required version
- * 
  * @category Configuration
  * @package  Levart
  * @author   Damar Suryo Sasono <damarsuryosasono@gmail.com>
@@ -12,7 +11,9 @@
  */
 declare(strict_types=1);
 
-namespace Levart;
+namespace Levart\Damar;
+
+use PDO;
 
 /**
  * Database class for handling database operations.
@@ -30,20 +31,20 @@ class Database
     /**
      * PDO instance for database connection.
      *
-     * @var \PDO
+     * @var PDO
      */
-    public $pdo;
+    public PDO $pdo;
 
     /**
      * Database constructor.
      *
      * @param array $config Database configuration
      */
-    public function __construct($config)
+    public function __construct(array $config)
     {
         $dsn = "pgsql:host={$config['host']};dbname={$config['name']}";
-        $this->pdo = new \PDO($dsn, $config['user'], $config['pass']);
-        $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $this->pdo = new PDO($dsn, $config['user'], $config['pass']);
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     /**
@@ -56,10 +57,13 @@ class Database
      *
      * @return bool Returns true on success or false on failure
      */
-    public function insertEmail($to, $subject, $message, $status)
+    public function insertEmail(string $to,
+                                string $subject,
+                                string $message,
+                                string $status): bool
     {
-        $sql = "INSERT INTO emails (recipient, subject, message, status)
-                VALUES (?, ?, ?, ?)";
+        $sql = 'INSERT INTO emails (recipient, subject, message, status)
+                VALUES (?, ?, ?, ?)';
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([$to, $subject, $message, $status]);
     }

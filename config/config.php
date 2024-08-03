@@ -3,7 +3,6 @@
  * Specify the PHP version
  * This line indicates the minimum PHP version required for this file
  * Change '8.0' to your required version
- * 
  * @category Configuration
  * @package  Levart
  * @author   Damar Suryo Sasono <damarsuryosasono@gmail.com>
@@ -22,7 +21,7 @@ declare(strict_types=1);
  * @license  http://www.opensource.org/licenses/mit-license.php MIT License
  * @link     https://github.com/ryosuryo/6fa16ef1cbb4ccbe1f9dfce6e1462429
  */
-namespace Levart;
+namespace Levart\Damar;
 
 /**
  * Configuration file
@@ -50,7 +49,7 @@ class Config
 
     public static $db = [
         'host' => 'golden-swimmer-9805.8nk.gcp-asia-southeast1.cockroachlabs.cloud',
-        'user' => 'damar',
+        'user' => 'email_be',
         'pass' => 'eHGt0xgqP364qCusMFe_OQ',
         'name' => 'levart',
     ];
@@ -81,7 +80,6 @@ class Config
      * Set the database configuration.
      *
      * @param array $db Database configuration settings.
-     * 
      * @return void
      */
     public static function setDb($db)
@@ -103,7 +101,6 @@ class Config
      * Set the email configuration.
      *
      * @param array $email Email configuration settings.
-     * 
      * @return void
      */
     public static function setEmail($email)
@@ -125,7 +122,6 @@ class Config
      * Set the OAuth2 configuration.
      *
      * @param array $oauth2 OAuth2 configuration settings.
-     * 
      * @return void
      */
     public static function setOauth2($oauth2)
